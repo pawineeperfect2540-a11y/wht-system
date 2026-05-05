@@ -115,8 +115,8 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a202c;font-size
     <h1>ระบบออกหนังสือรับรองการหักภาษี ณ ที่จ่าย</h1>
     <div class="company-name">บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด (สำนักงานใหญ่)</div>
   </div>
-  <div style="display:flex;gap:8px;margin-left:auto;align-items:center;flex-wrap:wrap">
-    <button class="btn-print-top" style="background:#7c3aed" onclick="openReport()">📊 รายงานสรุป</button>
+  <div style="display:flex;gap:10px;margin-left:auto;align-items:center">
+    <button class="btn-print-top" style="background:#7c3aed" onclick="openReport()">&#128202; รายงานสรุป</button>
     <button class="btn-print-top" style="background:#2563a8" onclick="saveToDrive()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M6.6 15l-4.8-8.3L6.6 15zm7.2 4.2l2.4-4.2H4.8l-2.4 4.2h11.4zm8.4-4.2L17.4 6.8 12 15.8l2.4 4.2 8.4-4.2zM8.1 2.8L2.4 12h5.4L13.2 2l-5.1.8z"/></svg>
       บันทึก Google Drive
@@ -128,88 +128,53 @@ body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a202c;font-size
 <!-- Report Modal -->
 <div id="reportModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:9999;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px 0">
   <div style="background:white;border-radius:12px;width:90%;max-width:1100px;margin:auto;font-family:'Sarabun',sans-serif;overflow:hidden">
-    <!-- Header -->
     <div style="background:#1e3a5f;color:white;padding:16px 24px;display:flex;align-items:center;justify-content:space-between">
-      <div>
-        <div style="font-size:17px;font-weight:700">📊 รายงานสรุปหนังสือรับรองหัก ณ ที่จ่าย</div>
-        <div style="font-size:12px;color:#9bc8f0;margin-top:2px">บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด</div>
-      </div>
-      <button onclick="closeReport()" style="background:rgba(255,255,255,.2);border:none;color:white;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:14px">✕ ปิด</button>
+      <div><div style="font-size:17px;font-weight:700">รายงานสรุปหนังสือรับรองหัก ณ ที่จ่าย</div>
+      <div style="font-size:12px;color:#9bc8f0;margin-top:2px">บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด</div></div>
+      <button onclick="closeReport()" style="background:rgba(255,255,255,.2);border:none;color:white;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:14px">X ปิด</button>
     </div>
-    <!-- Filter bar -->
     <div style="padding:16px 24px;background:#f7f9fc;border-bottom:1px solid #e2e8f0;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">เดือน</label>
-        <select id="reportMonth" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-          <option value="">ทุกเดือน</option>
-          <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option>
-          <option value="03">มีนาคม</option><option value="04">เมษายน</option>
-          <option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option>
-          <option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option>
-          <option value="09">กันยายน</option><option value="10">ตุลาคม</option>
-          <option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
-        </select>
-      </div>
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ปี</label>
-        <select id="reportYear" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-        </select>
-      </div>
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ประเภท</label>
-        <select id="reportType" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-          <option value="">ทั้งหมด</option>
-          <option value="individual">บุคคลธรรมดา (ภ.ง.ด.3)</option>
-          <option value="corporate">นิติบุคคล (ภ.ง.ด.53)</option>
-        </select>
-      </div>
+      <div><label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">เดือน</label>
+      <select id="reportMonth" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
+        <option value="">ทุกเดือน</option><option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option>
+        <option value="03">มีนาคม</option><option value="04">เมษายน</option><option value="05">พฤษภาคม</option>
+        <option value="06">มิถุนายน</option><option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option>
+        <option value="09">กันยายน</option><option value="10">ตุลาคม</option><option value="11">พฤศจิกายน</option>
+        <option value="12">ธันวาคม</option></select></div>
+      <div><label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ปี</label>
+      <select id="reportYear" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px"></select></div>
+      <div><label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ประเภท</label>
+      <select id="reportType" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
+        <option value="">ทั้งหมด</option><option value="individual">บุคคลธรรมดา</option>
+        <option value="corporate">นิติบุคคล</option></select></div>
       <div style="margin-left:auto;display:flex;gap:8px">
-        <button onclick="exportReportCSV()" style="background:#16a34a;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">⬇ Export CSV</button>
-        <button onclick="printReport()" style="background:#e05c1a;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">🖨 พิมพ์รายงาน</button>
-        <button onclick="if(confirm('ลบข้อมูลรายงานทั้งหมดใช่ไหม?'))clearReportData()" style="background:white;color:#dc2626;border:1px solid #dc2626;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px">🗑 ล้างข้อมูล</button>
+        <button onclick="exportReportCSV()" style="background:#16a34a;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">Export CSV</button>
+        <button onclick="if(confirm('ลบข้อมูลทั้งหมด?'))clearReportData()" style="background:white;color:#dc2626;border:1px solid #dc2626;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px">ล้าง</button>
       </div>
     </div>
-    <!-- Summary cards -->
     <div id="reportCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px 24px;background:#f7f9fc;border-bottom:1px solid #e2e8f0"></div>
-    <!-- Table -->
     <div style="padding:16px 24px;overflow-x:auto">
-      <table id="reportTable" style="width:100%;border-collapse:collapse;font-size:13px">
-        <thead>
-          <tr style="background:#1e3a5f;color:white">
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">ลำดับ</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขที่</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่ออก</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">ชื่อผู้รับเงิน</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขผู้เสียภาษี</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">ประเภทเงินได้</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่จ่าย</th>
-            <th style="padding:10px 8px;text-align:right;white-space:nowrap">จำนวนเงิน</th>
-            <th style="padding:10px 8px;text-align:right;white-space:nowrap">ภาษีหัก</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">แบบ</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">ประเภท</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">จัดการ</th>
-          </tr>
-        </thead>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:#1e3a5f;color:white">
+          <th style="padding:10px 8px;text-align:center">#</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขที่</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่ออก</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">ชื่อผู้รับเงิน</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขผู้เสียภาษี</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">ประเภทเงินได้</th>
+          <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่จ่าย</th>
+          <th style="padding:10px 8px;text-align:right;white-space:nowrap">จำนวนเงิน</th>
+          <th style="padding:10px 8px;text-align:right;white-space:nowrap">ภาษีหัก</th>
+          <th style="padding:10px 8px;text-align:center;white-space:nowrap">แบบ</th>
+          <th style="padding:10px 8px;text-align:center"></th>
+        </tr></thead>
         <tbody id="reportBody"></tbody>
         <tfoot id="reportFoot"></tfoot>
       </table>
-      <div id="reportEmpty" style="display:none;text-align:center;padding:40px;color:#718096;font-size:14px">
-        ยังไม่มีข้อมูล — ออกเอกสารและบันทึก Google Drive แล้วจะปรากฏที่นี่อัตโนมัติ
-      </div>
+      <div id="reportEmpty" style="display:none;text-align:center;padding:40px;color:#718096;font-size:14px">ยังไม่มีข้อมูล</div>
     </div>
   </div>
 </div>
-
-<!-- Report print styles -->
-<style>
-@media print {
-  #reportModal { display:block!important; position:static!important; background:white!important; padding:0!important; }
-  #reportModal > div { box-shadow:none!important; width:100%!important; border-radius:0!important; }
-  .report-no-print { display:none!important; }
-}
-</style>
-
-<!-- Drive Status Modal -->
 <!-- Drive Status Modal -->
 <div id="driveModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center">
   <div style="background:white;border-radius:12px;padding:28px 32px;width:420px;box-shadow:0 8px 40px rgba(0,0,0,.3);font-family:'Sarabun',sans-serif">
@@ -1398,12 +1363,12 @@ async function saveToDrive(){
     const safeDocNum=(docNum||'no-num').replace(/[\/\\:*?"<>|]/g,'-');
     const fileName='WHT_'+safeDocNum+'_'+safeRecipient+'.pdf';
 
-    // ใช้ Folder ID ของโฟลเดอร์ปี 2026 ตายตัว ไม่สร้างใหม่
-    const YEAR_FOLDER_ID='1zHHzkFt9sa_h09rLbZVVe5xHFHnYmA92';
     const yearFolder='หนังสือหัก ณ ที่จ่าย ปี '+new Date().getFullYear();
+    setDriveStatus('📁 สร้างโฟลเดอร์ปี: '+yearFolder,30);
+    const yearFolderId=await driveFindOrCreate(token,yearFolder,GDRIVE_ROOT_FOLDER);
 
     setDriveStatus('📁 สร้างโฟลเดอร์: '+safeRecipient,40);
-    const recipFolderId=await driveFindOrCreate(token,safeRecipient,YEAR_FOLDER_ID);
+    const recipFolderId=await driveFindOrCreate(token,safeRecipient,yearFolderId);
 
     setDriveStatus('📁 สร้างโฟลเดอร์เดือน: '+monthFolder,60);
     const monthFolderId=await driveFindOrCreate(token,monthFolder,recipFolderId);
@@ -1419,7 +1384,6 @@ async function saveToDrive(){
       document.getElementById('driveLink').style.display='block';
       document.getElementById('driveLinkEl').href=uploaded.webViewLink||
         'https://drive.google.com/file/d/'+uploaded.id+'/view';
-      recordToReport();
     }else{
       throw new Error(JSON.stringify(uploaded));
     }
@@ -1432,913 +1396,116 @@ async function saveToDrive(){
     }
   }
 }
-</script>
-<script src="https://accounts.google.com/gsi/client" async></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-</body>
-</html>updateCert();
 
-// ===== REPORT SYSTEM =====
-const LS_REPORT_KEY='wht_report_records';
-
-function loadReportRecords(){
-  try{ return JSON.parse(localStorage.getItem(LS_REPORT_KEY)||'[]'); }
-  catch{ return []; }
-}
-function saveReportRecords(arr){
-  localStorage.setItem(LS_REPORT_KEY,JSON.stringify(arr));
-}
-
+<script>
+var LS_REPORT_KEY='wht_report_records';
+function loadReportRecords(){try{return JSON.parse(localStorage.getItem(LS_REPORT_KEY)||'[]');}catch(e){return [];}}
+function saveReportRecords(arr){localStorage.setItem(LS_REPORT_KEY,JSON.stringify(arr));}
 function recordToReport(){
-  // เก็บข้อมูลเอกสารที่ออกไป
-  const docNum=document.getElementById('docNum').value.trim();
-  const issueDate=document.getElementById('issueDate').value;
-  const payDate=document.getElementById('payDate').value;
-  const name=document.getElementById('recipientName').value.trim();
-  const taxId=document.getElementById('recipientTaxId').value.trim();
-  const incomeType=document.getElementById('incomeType').value;
-  const incomeDesc=document.getElementById('incomeDesc').value.trim();
-  const amt=window._whtBase||parseFloat(document.getElementById('amount').value)||0;
-  const tax=window._whtAmt||0;
-  const recipType=currentRecipientType;
-  const payerType=document.getElementById('payerType').value;
-
-  const incomeLabels={
-    '1':'ม.40(1) เงินเดือน/ค่าจ้าง','2':'ม.40(2) ค่าธรรมเนียม',
-    '3':'ม.40(3) ลิขสิทธิ์','4a':'ม.40(4)(ก) ดอกเบี้ย',
-    '4b':'ม.40(4)(ข) เงินปันผล','5_rent':'ม.3เตรส ค่าเช่า',
-    '5_service':'ม.3เตรส ค่าบริการ','6':'อื่นๆ: '+incomeDesc
-  };
-
-  const record={
-    id:Date.now(),
-    docNum, issueDate, payDate, name, taxId,
-    incomeType, incomeLabel:incomeLabels[incomeType]||incomeType,
-    amt, tax, recipType, payerType,
-    savedAt:new Date().toISOString()
-  };
-  const records=loadReportRecords();
-  // ป้องกันซ้ำ - ถ้า docNum เดิมมีแล้ว update แทน
-  const idx=records.findIndex(r=>r.docNum===docNum);
-  if(idx>=0) records[idx]=record;
-  else records.unshift(record);
+  var docNum=document.getElementById('docNum').value.trim();
+  var issueDate=document.getElementById('issueDate').value;
+  var payDate=document.getElementById('payDate').value;
+  var name=document.getElementById('recipientName').value.trim();
+  var taxId=document.getElementById('recipientTaxId').value.trim();
+  var incomeType=document.getElementById('incomeType').value;
+  var incomeDesc=document.getElementById('incomeDesc').value.trim();
+  var amt=window._whtBase||parseFloat(document.getElementById('amount').value)||0;
+  var tax=window._whtAmt||0;
+  var recipType=currentRecipientType;
+  var labels={'1':'ม.40(1)','2':'ม.40(2)','3':'ม.40(3)','4a':'ม.40(4)ก','4b':'ม.40(4)ข','5_rent':'ค่าเช่า','5_service':'ค่าบริการ','6':'อื่นๆ:'+incomeDesc};
+  var record={id:Date.now(),docNum:docNum,issueDate:issueDate,payDate:payDate,name:name,taxId:taxId,incomeType:incomeType,incomeLabel:labels[incomeType]||incomeType,amt:amt,tax:tax,recipType:recipType};
+  var records=loadReportRecords();
+  var idx=-1;
+  for(var i=0;i<records.length;i++){if(records[i].docNum===docNum&&docNum){idx=i;break;}}
+  if(idx>=0)records[idx]=record; else records.unshift(record);
   saveReportRecords(records);
 }
-
 function openReport(){
   document.getElementById('reportModal').style.display='flex';
-  // Populate year dropdown
-  const records=loadReportRecords();
-  const years=new Set(records.map(r=>r.issueDate?r.issueDate.slice(0,4):'').filter(Boolean));
-  const curYear=new Date().getFullYear().toString();
-  years.add(curYear);
-  const sel=document.getElementById('reportYear');
-  sel.innerHTML='<option value="">ทุกปี</option>';
-  [...years].sort().reverse().forEach(y=>{
-    const opt=document.createElement('option');
-    opt.value=y; opt.textContent=y;
-    if(y===curYear) opt.selected=true;
-    sel.appendChild(opt);
-  });
+  var records=loadReportRecords();
+  var years={};
+  for(var i=0;i<records.length;i++){if(records[i].issueDate)years[records[i].issueDate.slice(0,4)]=1;}
+  var curYear=String(new Date().getFullYear());
+  years[curYear]=1;
+  var sel=document.getElementById('reportYear');
+  sel.innerHTML='';
+  var allOpt=document.createElement('option');allOpt.value='';allOpt.textContent='ทุกปี';sel.appendChild(allOpt);
+  var yrArr=Object.keys(years).sort().reverse();
+  for(var j=0;j<yrArr.length;j++){var o=document.createElement('option');o.value=yrArr[j];o.textContent=yrArr[j];if(yrArr[j]===curYear)o.selected=true;sel.appendChild(o);}
   renderReport();
 }
-
-function closeReport(){
-  document.getElementById('reportModal').style.display='none';
-}
-
+function closeReport(){document.getElementById('reportModal').style.display='none';}
 function filterRecords(){
-  const month=document.getElementById('reportMonth').value;
-  const year=document.getElementById('reportYear').value;
-  const type=document.getElementById('reportType').value;
-  let records=loadReportRecords();
-  if(year) records=records.filter(r=>r.issueDate&&r.issueDate.startsWith(year));
-  if(month) records=records.filter(r=>r.issueDate&&r.issueDate.slice(5,7)===month);
-  if(type) records=records.filter(r=>r.recipType===type);
-  return records;
-}
-
-function renderReport(){
-  const records=filterRecords();
-  const body=document.getElementById('reportBody');
-  const foot=document.getElementById('reportFoot');
-  const empty=document.getElementById('reportEmpty');
-  const cards=document.getElementById('reportCards');
-
-  if(records.length===0){
-    body.innerHTML=''; foot.innerHTML=''; empty.style.display='block';
-    cards.innerHTML=''; return;
+  var month=document.getElementById('reportMonth').value;
+  var year=document.getElementById('reportYear').value;
+  var type=document.getElementById('reportType').value;
+  var records=loadReportRecords();
+  var out=[];
+  for(var i=0;i<records.length;i++){
+    var r=records[i];
+    if(year&&(!r.issueDate||r.issueDate.indexOf(year)!==0))continue;
+    if(month&&(!r.issueDate||r.issueDate.slice(5,7)!==month))continue;
+    if(type&&r.recipType!==type)continue;
+    out.push(r);
   }
+  return out;
+}
+function renderReport(){
+  var records=filterRecords();
+  var body=document.getElementById('reportBody');
+  var foot=document.getElementById('reportFoot');
+  var empty=document.getElementById('reportEmpty');
+  var cards=document.getElementById('reportCards');
+  if(!records.length){body.innerHTML='';foot.innerHTML='';empty.style.display='block';cards.innerHTML='';return;}
   empty.style.display='none';
-
-  // Summary cards
-  const totalAmt=records.reduce((s,r)=>s+r.amt,0);
-  const totalTax=records.reduce((s,r)=>s+r.tax,0);
-  const indiv=records.filter(r=>r.recipType==='individual').length;
-  const corp=records.filter(r=>r.recipType==='corporate').length;
-  cards.innerHTML=`
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center">
-      <div style="font-size:24px;font-weight:700;color:#1e3a5f">${records.length}</div>
-      <div style="font-size:12px;color:#718096;margin-top:2px">ฉบับทั้งหมด</div>
-    </div>
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center">
-      <div style="font-size:18px;font-weight:700;color:#1e3a5f">${formatMoney(totalAmt)}</div>
-      <div style="font-size:12px;color:#718096;margin-top:2px">รวมจำนวนเงินที่จ่าย (บาท)</div>
-    </div>
-    <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:14px;text-align:center">
-      <div style="font-size:18px;font-weight:700;color:#92400e">${formatMoney(totalTax)}</div>
-      <div style="font-size:12px;color:#92400e;margin-top:2px">รวมภาษีที่หัก (บาท)</div>
-    </div>
-    <div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center">
-      <div style="font-size:16px;font-weight:700;color:#1e3a5f">${indiv} / ${corp}</div>
-      <div style="font-size:12px;color:#718096;margin-top:2px">บุคคลธรรมดา / นิติบุคคล</div>
-    </div>`;
-
-  // Table rows
-  body.innerHTML=records.map((r,i)=>`
-    <tr style="background:${i%2===0?'white':'#f8fafc'};border-bottom:1px solid #e2e8f0">
-      <td style="padding:8px;text-align:center;color:#718096">${i+1}</td>
-      <td style="padding:8px;font-weight:600;color:#1e3a5f;white-space:nowrap">${r.docNum||'-'}</td>
-      <td style="padding:8px;white-space:nowrap">${formatDateThai(r.issueDate)||'-'}</td>
-      <td style="padding:8px;max-width:180px">${r.name}</td>
-      <td style="padding:8px;font-size:12px;color:#718096;white-space:nowrap">${r.taxId?formatDisplayTaxId(r.taxId):'-'}</td>
-      <td style="padding:8px;font-size:12px">${r.incomeLabel||'-'}</td>
-      <td style="padding:8px;white-space:nowrap">${formatDateThai(r.payDate)||'-'}</td>
-      <td style="padding:8px;text-align:right;font-weight:600">${formatMoney(r.amt)}</td>
-      <td style="padding:8px;text-align:right;color:#dc2626;font-weight:600">${formatMoney(r.tax)}</td>
-      <td style="padding:8px;text-align:center;font-size:11px">
-        <span style="background:${r.recipType==='individual'?'#dbeafe':'#dcfce7'};color:${r.recipType==='individual'?'#1e40af':'#166534'};padding:2px 6px;border-radius:4px;white-space:nowrap">
-          ${r.recipType==='individual'?'ภ.ง.ด.3':'ภ.ง.ด.53'}
-        </span>
-      </td>
-      <td style="padding:8px;text-align:center;font-size:11px">
-        <span style="background:${r.recipType==='individual'?'#dbeafe':'#dcfce7'};color:${r.recipType==='individual'?'#1e40af':'#166534'};padding:2px 6px;border-radius:4px">
-          ${r.recipType==='individual'?'บุคคลธรรมดา':'นิติบุคคล'}
-        </span>
-      </td>
-      <td style="padding:8px;text-align:center">
-        <button onclick="deleteRecord(${r.id})" style="background:none;border:none;color:#dc2626;cursor:pointer;font-size:14px" title="ลบ">🗑</button>
-      </td>
-    </tr>`).join('');
-
-  // Footer totals
-  foot.innerHTML=`
-    <tr style="background:#1e3a5f;color:white;font-weight:700">
-      <td colspan="7" style="padding:10px 8px;text-align:right">รวมทั้งสิ้น (${records.length} รายการ)</td>
-      <td style="padding:10px 8px;text-align:right">${formatMoney(totalAmt)}</td>
-      <td style="padding:10px 8px;text-align:right">${formatMoney(totalTax)}</td>
-      <td colspan="3" style="padding:10px 8px"></td>
-    </tr>`;
+  var totalAmt=0,totalTax=0,indiv=0,corp=0;
+  for(var i=0;i<records.length;i++){totalAmt+=records[i].amt;totalTax+=records[i].tax;if(records[i].recipType==='individual')indiv++;else corp++;}
+  cards.innerHTML='<div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center"><div style="font-size:24px;font-weight:700;color:#1e3a5f">'+records.length+'</div><div style="font-size:12px;color:#718096">ฉบับทั้งหมด</div></div><div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center"><div style="font-size:18px;font-weight:700;color:#1e3a5f">'+formatMoney(totalAmt)+'</div><div style="font-size:12px;color:#718096">รวมจำนวนเงิน (บาท)</div></div><div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:14px;text-align:center"><div style="font-size:18px;font-weight:700;color:#92400e">'+formatMoney(totalTax)+'</div><div style="font-size:12px;color:#92400e">รวมภาษีหัก (บาท)</div></div><div style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:14px;text-align:center"><div style="font-size:16px;font-weight:700;color:#1e3a5f">'+indiv+' / '+corp+'</div><div style="font-size:12px;color:#718096">บุคคล / นิติ</div></div>';
+  var html='';
+  for(var k=0;k<records.length;k++){
+    var r=records[k];
+    var bg=k%2===0?'white':'#f8fafc';
+    var lbl=r.recipType==='individual'?'ภ.ง.ด.3':'ภ.ง.ด.53';
+    var clr=r.recipType==='individual'?'#1e40af':'#166534';
+    var bgc=r.recipType==='individual'?'#dbeafe':'#dcfce7';
+    html+='<tr style="background:'+bg+';border-bottom:1px solid #e2e8f0">'
+      +'<td style="padding:8px;text-align:center;color:#718096">'+(k+1)+'</td>'
+      +'<td style="padding:8px;font-weight:600;color:#1e3a5f;white-space:nowrap">'+(r.docNum||'-')+'</td>'
+      +'<td style="padding:8px;white-space:nowrap">'+(formatDateThai(r.issueDate)||'-')+'</td>'
+      +'<td style="padding:8px">'+r.name+'</td>'
+      +'<td style="padding:8px;font-size:12px;color:#718096;white-space:nowrap">'+(r.taxId?formatDisplayTaxId(r.taxId):'-')+'</td>'
+      +'<td style="padding:8px;font-size:12px">'+(r.incomeLabel||'-')+'</td>'
+      +'<td style="padding:8px;white-space:nowrap">'+(formatDateThai(r.payDate)||'-')+'</td>'
+      +'<td style="padding:8px;text-align:right;font-weight:600">'+formatMoney(r.amt)+'</td>'
+      +'<td style="padding:8px;text-align:right;color:#dc2626;font-weight:600">'+formatMoney(r.tax)+'</td>'
+      +'<td style="padding:8px;text-align:center"><span style="background:'+bgc+';color:'+clr+';padding:2px 6px;border-radius:4px;font-size:11px">'+lbl+'</span></td>'
+      +'<td style="padding:8px;text-align:center"><button onclick="deleteRecord('+r.id+')" style="background:none;border:none;color:#dc2626;cursor:pointer">&#128465;</button></td>'
+      +'</tr>';
+  }
+  body.innerHTML=html;
+  foot.innerHTML='<tr style="background:#1e3a5f;color:white;font-weight:700"><td colspan="7" style="padding:10px 8px;text-align:right">รวม ('+records.length+' รายการ)</td><td style="padding:10px 8px;text-align:right">'+formatMoney(totalAmt)+'</td><td style="padding:10px 8px;text-align:right">'+formatMoney(totalTax)+'</td><td colspan="2"></td></tr>';
 }
-
 function deleteRecord(id){
-  if(!confirm('ลบรายการนี้ใช่ไหม?')) return;
-  let records=loadReportRecords();
-  records=records.filter(r=>r.id!==id);
-  saveReportRecords(records);
-  renderReport();
+  if(!confirm('ลบรายการนี้?'))return;
+  var recs=loadReportRecords();var out=[];
+  for(var i=0;i<recs.length;i++){if(recs[i].id!==id)out.push(recs[i]);}
+  saveReportRecords(out);renderReport();
 }
-
-function clearReportData(){
-  saveReportRecords([]);
-  renderReport();
-}
-
+function clearReportData(){saveReportRecords([]);renderReport();}
 function exportReportCSV(){
-  const records=filterRecords();
-  if(records.length===0){alert('ไม่มีข้อมูล');return;}
-  const headers=['เลขที่','วันที่ออก','ชื่อผู้รับเงิน','เลขผู้เสียภาษี','ประเภทเงินได้','วันที่จ่าย','จำนวนเงิน','ภาษีหัก','ประเภท'];
-  const rows=records.map(r=>[
-    r.docNum, r.issueDate, r.name, r.taxId,
-    r.incomeLabel, r.payDate, r.amt, r.tax,
-    r.recipType==='individual'?'บุคคลธรรมดา':'นิติบุคคล'
-  ]);
-  const csv='\uFEFF'+[headers,...rows].map(row=>row.map(v=>'"'+(v||'').toString().replace(/"/g,'""')+'"').join(',')).join('\n');
-  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='รายงานหักณที่จ่าย_'+(new Date().toLocaleDateString('th-TH'))+'.csv';
-  a.click();
+  var records=filterRecords();
+  if(!records.length){alert('ไม่มีข้อมูล');return;}
+  var lines=['เลขที่,วันที่ออก,ชื่อผู้รับเงิน,เลขผู้เสียภาษี,ประเภทเงินได้,วันที่จ่าย,จำนวนเงิน,ภาษีหัก,ประเภท'];
+  for(var i=0;i<records.length;i++){
+    var r=records[i];
+    lines.push([r.docNum,r.issueDate,r.name,r.taxId,r.incomeLabel,r.payDate,r.amt,r.tax,r.recipType==='individual'?'บุคคลธรรมดา':'นิติบุคคล'].join(','));
+  }
+  var csv=lines.join('
+');
+  var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='report.csv';a.click();
 }
-
-function printReport(){
-  window.print();
-}
-
-</script>lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ระบบออกหนังสือรับรองการหักภาษี ณ ที่จ่าย</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun',sans-serif;background:#eef2f7;color:#1a202c;font-size:15px}
-.no-print{}.print-only{display:none}
-
-/* Header */
-.app-header{background:#1e3a5f;color:white;padding:10px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);flex-wrap:wrap}
-.app-header h1{font-size:17px;font-weight:600;letter-spacing:.3px}
-.app-header .company-name{font-size:12px;color:#9bc8f0;margin-top:2px}
-.btn-print-top{background:#e05c1a;color:white;border:none;padding:7px 14px;border-radius:6px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap}
-.btn-print-top:hover{background:#c74e10}
-
-/* Layout */
-.main-layout{display:grid;grid-template-columns:420px 1fr;gap:0;min-height:calc(100vh - 52px)}
-
-/* Form panel */
-.form-panel{background:white;padding:20px;overflow-y:auto;border-right:1px solid #d1dbe8;height:calc(100vh - 52px);position:sticky;top:52px}
-.form-section{margin-bottom:20px}
-.section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1e3a5f;border-bottom:2px solid #1e3a5f;padding-bottom:6px;margin-bottom:14px}
-.form-row{margin-bottom:12px}
-.form-row label{display:block;font-size:13px;font-weight:600;color:#4a5568;margin-bottom:4px}
-.form-row input,.form-row select,.form-row textarea{width:100%;padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:14px;color:#1a202c;background:#fff;transition:border-color .15s}
-.form-row input:focus,.form-row select:focus{border-color:#1e3a5f;outline:none}
-.form-row input[readonly]{background:#f7fafc;color:#718096}
-.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.recipient-search-wrap{position:relative}
-.search-dropdown{position:absolute;top:100%;left:0;right:0;background:white;border:1px solid #cbd5e0;border-top:none;border-radius:0 0 6px 6px;max-height:220px;overflow-y:auto;z-index:50;display:none}
-.search-dropdown.open{display:block}
-.search-item{padding:8px 12px;cursor:pointer;font-size:13px;border-bottom:1px solid #f0f4f8}
-.search-item:hover{background:#eef2f7}
-.search-item .item-name{font-weight:600;color:#1a202c}
-.search-item .item-taxid{color:#718096;font-size:12px}
-.search-item .item-type{font-size:11px;padding:1px 6px;border-radius:3px;margin-left:6px}
-.type-individual{background:#dbeafe;color:#1e40af}
-.type-corporate{background:#dcfce7;color:#166534}
-.badge-type{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;margin-top:4px}
-.tax-calc-box{background:#f0f7ff;border:1px solid #bee3f8;border-radius:6px;padding:12px;margin-top:10px}
-.tax-calc-box .calc-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.tax-calc-box .calc-row:last-child{margin-bottom:0;padding-top:6px;border-top:1px solid #bee3f8;font-weight:700;font-size:15px;color:#1e3a5f}
-.tax-calc-box label{font-size:13px;color:#4a5568}
-.btn-generate{width:100%;background:#1e3a5f;color:white;border:none;padding:12px;border-radius:7px;font-family:'Sarabun',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px}
-.btn-generate:hover{background:#163050}
-.btn-clear{width:100%;background:white;color:#718096;border:1px solid #cbd5e0;padding:8px;border-radius:7px;font-family:'Sarabun',sans-serif;font-size:13px;cursor:pointer;margin-top:6px}
-.btn-clear:hover{background:#f7fafc}
-
-/* Preview panel */
-.preview-panel{padding:24px;overflow-y:auto;background:#d1dbe8;display:flex;flex-direction:column;align-items:center}
-.preview-title{font-size:13px;font-weight:600;color:#4a5568;text-align:center;margin-bottom:16px;letter-spacing:.5px}
-.cert-wrapper{background:white;box-shadow:0 4px 20px rgba(0,0,0,.15);border-radius:4px;overflow:hidden}
-
-/* Certificate */
-.cert{width:190mm;padding:8mm 10mm;font-family:'Sarabun',sans-serif;font-size:10pt;color:#000;background:white}
-.cert-header{text-align:center;margin-bottom:5mm}
-.cert-header h2{font-size:14pt;font-weight:700;margin-bottom:1mm}
-.cert-header p{font-size:9pt;color:#333}
-.cert-docnum{display:flex;justify-content:flex-end;margin-bottom:4mm;gap:20px;font-size:9pt}
-.cert-docnum span{font-weight:600}
-.cert-section{border:1px solid #333;padding:3mm 4mm;margin-bottom:2mm;position:relative}
-.cert-section-title{font-weight:700;font-size:9.5pt;margin-bottom:1.5mm}
-.cert-row{display:flex;gap:8mm;margin-bottom:1.5mm;align-items:baseline;font-size:9pt}
-.cert-row .label{white-space:nowrap;min-width:30mm;color:#333}
-.cert-row .value{flex:1;border-bottom:1px dotted #999;min-height:5mm;padding:0 2mm}
-.cert-row .taxid-label{white-space:nowrap;font-size:8.5pt;color:#444}
-.cert-row .taxid-value{border-bottom:1px dotted #999;min-width:50mm;padding:0 2mm;font-size:8.5pt}
-.cert-hint{font-size:7.5pt;color:#666;margin-left:32mm;margin-bottom:1.5mm}
-.cert-seq-row{display:flex;align-items:center;gap:4mm;margin-bottom:2mm;font-size:9pt;flex-wrap:wrap}
-.cert-seq-row .seq-label{font-weight:600;white-space:nowrap}
-.cert-seq-row .seq-num{border:1px solid #333;padding:0 3mm;min-width:12mm;text-align:center}
-.cert-forms{display:flex;flex-wrap:wrap;gap:2mm 5mm;font-size:8.5pt;margin-left:auto}
-.cert-forms .form-item{display:flex;align-items:center;gap:1mm;white-space:nowrap}
-.form-checkbox{width:10px;height:10px;border:1px solid #333;display:inline-flex;align-items:center;justify-content:center;font-size:9pt;line-height:1}
-.cert-table{width:100%;border-collapse:collapse;margin-bottom:2mm;font-size:9pt}
-.cert-table th,.cert-table td{border:1px solid #555;padding:1.5mm 2mm;vertical-align:middle}
-.cert-table th{background:#f5f5f5;font-weight:700;text-align:center;font-size:8.5pt}
-.cert-table td.income-label{width:65%;font-size:8.5pt}
-.cert-table td.date-col{width:18%;text-align:center;font-size:9pt}
-.cert-table td.amount-col,.cert-table td.tax-col{text-align:right;width:13%;font-size:9pt}
-.cert-table tr.total-row td{background:#f9f9f9;font-weight:700}
-.cert-words{border:1px solid #555;padding:2mm 4mm;margin-bottom:2mm;font-size:9pt;display:flex;align-items:center;gap:4mm}
-.cert-words .label{white-space:nowrap;font-weight:600}
-.cert-words .value{flex:1;font-style:italic;text-align:center}
-.cert-payer-section{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-bottom:3mm}
-.cert-payer-type{border:1px solid #555;padding:2mm 3mm;font-size:9pt}
-.cert-payer-type .ptype-title{font-weight:700;margin-bottom:2mm;font-size:9pt}
-.ptype-row{display:flex;align-items:center;gap:2mm;margin-bottom:1.5mm;font-size:8.5pt}
-.cert-signature{border:1px solid #555;padding:3mm 4mm;font-size:9pt;text-align:center}
-.cert-signature .sig-line{border-bottom:1px dotted #999;height:10mm;margin:2mm 0}
-.cert-footer{font-size:7.5pt;color:#555;border-top:1px solid #aaa;padding-top:2mm;display:grid;grid-template-columns:1fr 1fr;gap:4mm}
-.cert-footer .warn-title{font-weight:700;margin-bottom:1mm;font-size:8pt}
-
-/* Print styles */
-@media print{
-  body{background:white}
-  .no-print{display:none!important}
-  .print-only{display:block}
-  .main-layout{display:block}
-  .preview-panel{padding:0;background:white}
-  .cert-wrapper{box-shadow:none;border-radius:0}
-  .cert{width:100%;padding:6mm 8mm;font-size:9.5pt}
-  .preview-title{display:none}
-}
-</style>
-</head>
-<body>
-
-<div class="app-header no-print">
-  <div>
-    <h1>ระบบออกหนังสือรับรองการหักภาษี ณ ที่จ่าย</h1>
-    <div class="company-name">บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด (สำนักงานใหญ่)</div>
-  </div>
-  <div style="display:flex;gap:8px;margin-left:auto;align-items:center;flex-wrap:wrap">
-    <button class="btn-print-top" style="background:#7c3aed" onclick="openReport()">📊 รายงานสรุป</button>
-    <button class="btn-print-top" style="background:#2563a8" onclick="saveToDrive()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M6.6 15l-4.8-8.3L6.6 15zm7.2 4.2l2.4-4.2H4.8l-2.4 4.2h11.4zm8.4-4.2L17.4 6.8 12 15.8l2.4 4.2 8.4-4.2zM8.1 2.8L2.4 12h5.4L13.2 2l-5.1.8z"/></svg>
-      บันทึก Google Drive
-    </button>
-    <button class="btn-print-top" onclick="window.print()">🖨 พิมพ์เอกสาร</button>
-  </div>
-</div>
-
-<!-- Report Modal -->
-<div id="reportModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:9999;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px 0">
-  <div style="background:white;border-radius:12px;width:90%;max-width:1100px;margin:auto;font-family:'Sarabun',sans-serif;overflow:hidden">
-    <!-- Header -->
-    <div style="background:#1e3a5f;color:white;padding:16px 24px;display:flex;align-items:center;justify-content:space-between">
-      <div>
-        <div style="font-size:17px;font-weight:700">📊 รายงานสรุปหนังสือรับรองหัก ณ ที่จ่าย</div>
-        <div style="font-size:12px;color:#9bc8f0;margin-top:2px">บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด</div>
-      </div>
-      <button onclick="closeReport()" style="background:rgba(255,255,255,.2);border:none;color:white;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:14px">✕ ปิด</button>
-    </div>
-    <!-- Filter bar -->
-    <div style="padding:16px 24px;background:#f7f9fc;border-bottom:1px solid #e2e8f0;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">เดือน</label>
-        <select id="reportMonth" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-          <option value="">ทุกเดือน</option>
-          <option value="01">มกราคม</option><option value="02">กุมภาพันธ์</option>
-          <option value="03">มีนาคม</option><option value="04">เมษายน</option>
-          <option value="05">พฤษภาคม</option><option value="06">มิถุนายน</option>
-          <option value="07">กรกฎาคม</option><option value="08">สิงหาคม</option>
-          <option value="09">กันยายน</option><option value="10">ตุลาคม</option>
-          <option value="11">พฤศจิกายน</option><option value="12">ธันวาคม</option>
-        </select>
-      </div>
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ปี</label>
-        <select id="reportYear" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-        </select>
-      </div>
-      <div>
-        <label style="font-size:12px;color:#4a5568;font-weight:600;display:block;margin-bottom:4px">ประเภท</label>
-        <select id="reportType" onchange="renderReport()" style="padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-          <option value="">ทั้งหมด</option>
-          <option value="individual">บุคคลธรรมดา (ภ.ง.ด.3)</option>
-          <option value="corporate">นิติบุคคล (ภ.ง.ด.53)</option>
-        </select>
-      </div>
-      <div style="margin-left:auto;display:flex;gap:8px">
-        <button onclick="exportReportCSV()" style="background:#16a34a;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">⬇ Export CSV</button>
-        <button onclick="printReport()" style="background:#e05c1a;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600">🖨 พิมพ์รายงาน</button>
-        <button onclick="if(confirm('ลบข้อมูลรายงานทั้งหมดใช่ไหม?'))clearReportData()" style="background:white;color:#dc2626;border:1px solid #dc2626;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:13px">🗑 ล้างข้อมูล</button>
-      </div>
-    </div>
-    <!-- Summary cards -->
-    <div id="reportCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px 24px;background:#f7f9fc;border-bottom:1px solid #e2e8f0"></div>
-    <!-- Table -->
-    <div style="padding:16px 24px;overflow-x:auto">
-      <table id="reportTable" style="width:100%;border-collapse:collapse;font-size:13px">
-        <thead>
-          <tr style="background:#1e3a5f;color:white">
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">ลำดับ</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขที่</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่ออก</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">ชื่อผู้รับเงิน</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">เลขผู้เสียภาษี</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">ประเภทเงินได้</th>
-            <th style="padding:10px 8px;text-align:left;white-space:nowrap">วันที่จ่าย</th>
-            <th style="padding:10px 8px;text-align:right;white-space:nowrap">จำนวนเงิน</th>
-            <th style="padding:10px 8px;text-align:right;white-space:nowrap">ภาษีหัก</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">แบบ</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">ประเภท</th>
-            <th style="padding:10px 8px;text-align:center;white-space:nowrap">จัดการ</th>
-          </tr>
-        </thead>
-        <tbody id="reportBody"></tbody>
-        <tfoot id="reportFoot"></tfoot>
-      </table>
-      <div id="reportEmpty" style="display:none;text-align:center;padding:40px;color:#718096;font-size:14px">
-        ยังไม่มีข้อมูล — ออกเอกสารและบันทึก Google Drive แล้วจะปรากฏที่นี่อัตโนมัติ
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Report print styles -->
-<style>
-@media print {
-  #reportModal { display:block!important; position:static!important; background:white!important; padding:0!important; }
-  #reportModal > div { box-shadow:none!important; width:100%!important; border-radius:0!important; }
-  .report-no-print { display:none!important; }
-}
-</style>
-
-<!-- Drive Status Modal -->
-<!-- Drive Status Modal -->
-<div id="driveModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center">
-  <div style="background:white;border-radius:12px;padding:28px 32px;width:420px;box-shadow:0 8px 40px rgba(0,0,0,.3);font-family:'Sarabun',sans-serif">
-    <div style="font-size:17px;font-weight:700;color:#1e3a5f;margin-bottom:16px">📤 บันทึกไปยัง Google Drive</div>
-    <div id="driveStatus" style="font-size:14px;color:#4a5568;line-height:1.8;min-height:80px"></div>
-    <div id="driveProgress" style="margin:14px 0;background:#eef2f7;border-radius:6px;height:6px;overflow:hidden;display:none">
-      <div id="driveProgressBar" style="height:100%;background:#2563a8;width:0%;transition:width .4s ease"></div>
-    </div>
-    <div id="driveLink" style="display:none;margin-top:12px">
-      <a id="driveLinkEl" href="#" target="_blank" style="background:#2563a8;color:white;padding:8px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:600">🔗 เปิดไฟล์ใน Google Drive</a>
-    </div>
-    <button onclick="document.getElementById('driveModal').style.display='none'" style="margin-top:16px;width:100%;padding:9px;border:1px solid #cbd5e0;border-radius:6px;background:white;font-family:'Sarabun',sans-serif;font-size:14px;cursor:pointer;color:#718096">ปิด</button>
-  </div>
-</div>
-
-<div class="main-layout">
-
-<!-- FORM PANEL -->
-<div class="form-panel no-print">
-
-  <!-- Document Info -->
-  <div class="form-section">
-    <div class="section-title">ข้อมูลเอกสาร</div>
-
-    <!-- Book number row -->
-    <div class="form-row">
-      <label>เล่มที่ <span style="font-weight:400;color:#718096;font-size:12px">(รันตามเดือน/ปีอัตโนมัติ)</span></label>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="text" id="bookNum" style="flex:1" oninput="updateCert()">
-        <button onclick="resetBookNum()" title="รีเซ็ตเล่มที่เป็นเดือนปีปัจจุบัน" style="background:#eef2f7;border:1px solid #cbd5e0;border-radius:5px;padding:6px 10px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:12px;white-space:nowrap;color:#4a5568">↺ รีเซ็ต</button>
-      </div>
-    </div>
-
-    <!-- Doc number row -->
-    <div class="form-row">
-      <label>เลขที่ <span style="font-weight:400;color:#718096;font-size:12px">(รันต่อเนื่องอัตโนมัติ)</span></label>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="text" id="docNum" style="flex:1;background:#f7fafc;font-weight:700;color:#1e3a5f" readonly>
-        <button onclick="manualEditDocNum()" id="btnEditDocNum" title="แก้ไขเลขที่ด้วยตัวเอง" style="background:#eef2f7;border:1px solid #cbd5e0;border-radius:5px;padding:6px 10px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:12px;white-space:nowrap;color:#4a5568">✏ แก้ไข</button>
-      </div>
-      <div style="margin-top:6px;display:flex;align-items:center;gap:8px">
-        <span style="font-size:12px;color:#718096">เลขถัดไป:</span>
-        <span id="nextDocNumPreview" style="font-size:12px;font-weight:700;color:#1e3a5f"></span>
-        <button onclick="useNextDocNum()" style="background:#1e3a5f;color:white;border:none;border-radius:4px;padding:3px 10px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:12px">ใช้เลขนี้ →</button>
-        <button onclick="skipDocNum()" style="background:white;color:#718096;border:1px solid #cbd5e0;border-radius:4px;padding:3px 8px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:12px" title="ข้ามเลขนี้">ข้าม</button>
-      </div>
-    </div>
-
-    <!-- Counter settings -->
-    <div style="background:#f7f9fc;border:1px solid #d1dbe8;border-radius:6px;padding:10px 12px;margin-bottom:12px">
-      <div style="font-size:12px;font-weight:700;color:#4a5568;margin-bottom:8px">⚙ ตั้งค่าตัวเลขเลขที่</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end">
-        <div>
-          <label style="font-size:12px;color:#718096;display:block;margin-bottom:3px">Prefix (รหัสนำหน้า)</label>
-          <input type="text" id="docPrefix" placeholder="เช่น 6903-" style="width:100%;padding:5px 8px;border:1px solid #cbd5e0;border-radius:4px;font-family:'Sarabun',sans-serif;font-size:13px" oninput="refreshDocNum()">
-        </div>
-        <div>
-          <label style="font-size:12px;color:#718096;display:block;margin-bottom:3px">เลขปัจจุบัน</label>
-          <div style="display:flex;gap:4px">
-            <input type="number" id="docCounter" min="1" style="width:80px;padding:5px 8px;border:1px solid #cbd5e0;border-radius:4px;font-family:'Sarabun',sans-serif;font-size:13px" oninput="refreshDocNum()">
-            <span style="font-size:12px;color:#718096;align-self:center">/ จำนวนหลัก</span>
-            <select id="docPadding" style="width:55px;padding:5px 4px;border:1px solid #cbd5e0;border-radius:4px;font-family:'Sarabun',sans-serif;font-size:13px" onchange="refreshDocNum()">
-              <option value="3">3</option>
-              <option value="4" selected>4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:8px;font-size:12px;color:#718096">
-        ตัวอย่าง: <strong id="docNumExample" style="color:#1e3a5f"></strong>
-        &nbsp;|&nbsp; เอกสารที่ออกไปแล้วเดือนนี้: <strong id="usedCount" style="color:#e05c1a"></strong> ฉบับ
-        <button onclick="resetCounter()" style="float:right;background:white;color:#e05c1a;border:1px solid #e05c1a;border-radius:4px;padding:2px 8px;cursor:pointer;font-family:'Sarabun',sans-serif;font-size:11px">รีเซ็ตตัวนับ</button>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <label>วันที่ออกหนังสือรับรอง</label>
-      <input type="date" id="issueDate" oninput="updateCert()">
-    </div>
-  </div>
-
-  <!-- Recipient -->
-  <div class="form-section">
-    <div class="section-title">ผู้ถูกหักภาษี ณ ที่จ่าย</div>
-    <div class="form-row">
-      <label>ค้นหาชื่อหรือเลขที่ผู้เสียภาษี</label>
-      <div class="recipient-search-wrap">
-        <input type="text" id="searchBox" placeholder="พิมพ์ชื่อหรือเลขประจำตัวผู้เสียภาษี..." oninput="searchRecipients(this.value)" onfocus="searchRecipients(this.value)" autocomplete="off">
-        <div class="search-dropdown" id="searchDropdown"></div>
-      </div>
-    </div>
-    <div class="form-row">
-      <label>ชื่อ - นามสกุล / บริษัท <span id="recipientTypeBadge" class="badge-type"></span></label>
-      <input type="text" id="recipientName" placeholder="ชื่อผู้รับเงิน" oninput="onRecipientInput();updateCert()">
-    </div>
-    <div class="form-row">
-      <label>เลขประจำตัวผู้เสียภาษี (13 หลัก)</label>
-      <input type="text" id="recipientTaxId" placeholder="X XXXX XXXXX XX X" oninput="formatTaxId('recipientTaxId');updateCert()">
-    </div>
-    <div class="form-row">
-      <label>ที่อยู่</label>
-      <textarea id="recipientAddr" rows="2" placeholder="ที่อยู่" oninput="onRecipientInput();updateCert()" style="resize:vertical;font-family:'Sarabun',sans-serif;padding:7px 10px;border:1px solid #cbd5e0;border-radius:5px;width:100%;font-size:14px"></textarea>
-    </div>
-    <!-- Save new recipient button -->
-    <div id="saveRecipientBox" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:7px;padding:10px 12px;margin-top:6px">
-      <div style="font-size:12px;color:#15803d;font-weight:600;margin-bottom:6px">💾 พบข้อมูลใหม่ที่ยังไม่มีในระบบ</div>
-      <div style="font-size:12px;color:#4a5568;margin-bottom:8px">เลือกประเภทแล้วกดบันทึก เพื่อเพิ่มเข้าระบบ</div>
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-        <label style="font-size:12px;color:#4a5568">ประเภท:</label>
-        <select id="newRecipientType" style="flex:1;padding:5px 8px;border:1px solid #cbd5e0;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px">
-          <option value="individual">บุคคลธรรมดา</option>
-          <option value="corporate">นิติบุคคล</option>
-        </select>
-      </div>
-      <button onclick="saveNewRecipient()" style="width:100%;background:#16a34a;color:white;border:none;padding:8px;border-radius:5px;font-family:'Sarabun',sans-serif;font-size:13px;font-weight:600;cursor:pointer">
-        ✅ บันทึกเข้าระบบ
-      </button>
-    </div>
-  </div>
-
-  <!-- Income Details -->
-  <div class="form-section">
-    <div class="section-title">รายละเอียดการจ่ายเงิน</div>
-    <div class="form-row">
-      <label>ประเภทเงินได้</label>
-      <select id="incomeType" onchange="onIncomeTypeChange()">
-        <option value="">-- เลือกประเภทเงินได้ --</option>
-        <option value="1">1. เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส ฯลฯ (ม.40(1))</option>
-        <option value="2">2. ค่าธรรมเนียม ค่านายหน้า ฯลฯ (ม.40(2))</option>
-        <option value="3">3. ค่าแห่งลิขสิทธิ์ ฯลฯ (ม.40(3))</option>
-        <option value="4a">4ก. ค่าดอกเบี้ย ฯลฯ (ม.40(4)(ก))</option>
-        <option value="4b">4ข. เงินปันผล ส่วนแบ่งของกำไร (ม.40(4)(ข))</option>
-        <option value="5_rent">5. ค่าเช่า (ม.3 เตรส) - อัตรา 5%</option>
-        <option value="5_service">5. ค่าบริการ / ค่าจ้างทำของ (ม.3 เตรส) - อัตรา 3%</option>
-        <option value="6">6. อื่นๆ (ระบุ)</option>
-      </select>
-    </div>
-    <div class="form-row" id="incomeDescRow" style="display:none">
-      <label>ระบุประเภท (อื่นๆ)</label>
-      <input type="text" id="incomeDesc" placeholder="เช่น ค่าเช่า, ค่าจ้าง, ค่าที่ปรึกษา" oninput="updateCert()">
-    </div>
-    <div class="form-row">
-      <label>วัน เดือน ปี ที่จ่าย</label>
-      <input type="date" id="payDate" oninput="updateCert()">
-    </div>
-    <!-- VAT / Amount mode selector -->
-    <div class="form-row">
-      <label>ประเภทยอดที่กรอก</label>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-        <label id="modeBtn0" onclick="setAmountMode(0)" style="cursor:pointer;text-align:center;padding:7px 4px;border:2px solid #1e3a5f;border-radius:6px;font-size:12px;font-weight:700;color:white;background:#1e3a5f">ก่อน VAT</label>
-        <label id="modeBtn1" onclick="setAmountMode(1)" style="cursor:pointer;text-align:center;padding:7px 4px;border:2px solid #cbd5e0;border-radius:6px;font-size:12px;font-weight:700;color:#718096;background:white">รวม VAT</label>
-        <label id="modeBtn2" onclick="setAmountMode(2)" style="cursor:pointer;text-align:center;padding:7px 4px;border:2px solid #cbd5e0;border-radius:6px;font-size:12px;font-weight:700;color:#718096;background:white">หลังหักภาษี</label>
-      </div>
-    </div>
-    <div class="form-row" id="vatRateRow" style="display:none">
-      <label>อัตรา VAT (%)</label>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="number" id="vatRate" value="7" step="0.01" min="0" max="100" style="width:80px" oninput="calcTax()">
-        <span style="font-size:13px;color:#718096">%</span>
-      </div>
-    </div>
-    <div class="form-row">
-      <label id="amountLabel">จำนวนเงิน ก่อน VAT (บาท)</label>
-      <input type="number" id="amount" placeholder="0.00" step="0.01" min="0" oninput="calcTax()">
-    </div>
-    <div class="form-row">
-      <label>อัตราภาษีหัก ณ ที่จ่าย (%)</label>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="number" id="taxRate" placeholder="เช่น 1, 3, 5" step="0.01" min="0" max="100" style="width:80px" oninput="calcTax()">
-        <span style="font-size:13px;color:#718096">%</span>
-      </div>
-    </div>
-
-    <div class="tax-calc-box">
-      <div class="calc-row"><label>ราคาก่อน VAT</label><span id="calcPreVat">-</span></div>
-      <div class="calc-row" id="rowVat" style="display:none"><label id="labelVat">VAT 7%</label><span id="calcVat">-</span></div>
-      <div class="calc-row" id="rowTotal" style="display:none"><label>ราคารวม VAT</label><span id="calcTotal">-</span></div>
-      <div class="calc-row"><label>จำนวนเงินที่จ่าย (ในเอกสาร)</label><span id="calcAmount" style="font-weight:700;color:#1e3a5f">-</span></div>
-      <div class="calc-row"><label>ภาษีหัก ณ ที่จ่าย</label><span id="calcTaxAmt">-</span></div>
-      <div class="calc-row"><label style="font-weight:700;color:#1e3a5f">เงินที่ผู้รับได้รับจริง</label><span id="calcNet" style="font-weight:700;font-size:15px;color:#1e3a5f">-</span></div>
-    </div>
-  </div>
-
-  <!-- Payment Type -->
-  <div class="form-section">
-    <div class="section-title">ผู้จ่ายเงิน (วิธีการชำระภาษี)</div>
-    <div class="form-row">
-      <select id="payerType" onchange="updateCert()">
-        <option value="withhold">หักภาษี ณ ที่จ่าย</option>
-        <option value="pay_once">ออกภาษีให้ครั้งเดียว (บุคคลธรรมดา)</option>
-        <option value="pay_always">ออกภาษีให้ตลอดไป</option>
-        <option value="other">อื่นๆ (ระบุ)</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <label>ลำดับที่ (ในแบบยื่น)</label>
-    <input type="number" id="seqNum" value="1" min="1" oninput="updateCert()" style="width:80px">
-  </div>
-
-  <button class="btn-generate" onclick="updateCert()">🔄 อัปเดตเอกสาร</button>
-  <button class="btn-clear" onclick="clearForm()">ล้างข้อมูล</button>
-
-</div><!-- end form-panel -->
-
-<!-- PREVIEW PANEL -->
-<div class="preview-panel">
-  <div class="preview-title no-print">ตัวอย่างหนังสือรับรองการหักภาษี ณ ที่จ่าย | คลิกพิมพ์เพื่อพิมพ์</div>
-  <div class="cert-wrapper">
-    <div class="cert" id="certificate">
-
-<style>
-.cert{width:195mm;padding:6mm 8mm;font-family:'Sarabun',sans-serif;font-size:9pt;color:#000;background:white;line-height:1.3}
-.ct{width:100%;border-collapse:collapse;font-size:9pt}
-.ct td,.ct th{padding:0;margin:0}
-.bx{border:1px solid #111}
-.bt{border-top:1px solid #111}.bb{border-bottom:1px solid #111}
-.bl{border-left:1px solid #111}.br{border-right:1px solid #111}
-.p1{padding:1px 4px}.p2{padding:2px 4px}.p3{padding:3px 5px}
-.small{font-size:7.5pt;color:#555}
-.cb{display:inline-block;width:10px;height:10px;border:1px solid #333;vertical-align:middle;text-align:center;font-size:9pt;line-height:10px}
-.dots{border-bottom:1px dotted #888;display:inline-block;vertical-align:bottom}
-.income-desc{font-size:8.5pt}
-</style>
-
-<!-- ======= TITLE ======= -->
-<table class="ct" style="margin-bottom:0">
-  <tr>
-    <td style="text-align:center;font-size:14pt;font-weight:700;padding-bottom:0">หนังสือรับรองการหักภาษี ณ ที่จ่าย</td>
-    <td style="text-align:right;white-space:nowrap;vertical-align:bottom;width:55mm;font-size:9pt">เล่มที่&nbsp;<span id="c_bookNum" style="font-weight:700">05/2026</span></td>
-  </tr>
-  <tr>
-    <td style="text-align:center;font-size:9pt;padding-top:0">ตามมาตรา &nbsp;50 &nbsp;ทวิ &nbsp;แห่งประมวลรัษฎากร</td>
-    <td style="text-align:right;white-space:nowrap;font-size:9pt">เลขที่&nbsp;<span id="c_docNum" style="font-weight:700" class="dots" style="min-width:30mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-  </tr>
-</table>
-<div style="height:2mm"></div>
-
-<!-- ======= ผู้มีหน้าที่หักภาษี ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <tr>
-    <td class="p2 bb" style="font-weight:700;font-size:9pt;width:55%">ผู้มีหน้าที่หักภาษี &nbsp;ณ &nbsp;ที่จ่าย :-</td>
-    <td class="p1 bb bl" style="font-size:8pt;width:22%">เลขประจำตัวประชาชน</td>
-    <td class="p1 bb" style="width:23%"></td>
-  </tr>
-  <tr>
-    <td class="p1 bb">ชื่อ &nbsp;&nbsp;บริษัท เพอร์เฟค กรุ๊ป อินเตอร์เทรดดิ้ง จำกัด (สำนักงานใหญ่)</td>
-    <td class="p1 bb bl" style="font-size:8pt">เลขประจำตัวผู้เสียภาษีอากร</td>
-    <td class="p1 bb" style="font-weight:700">0 90555 7000 83 8</td>
-  </tr>
-  <tr><td class="small bb p1" colspan="3">( ให้ระบุว่าเป็น บุคคล นิติบุคคล บริษัท สมาคม หรือ คณะบุคคล )</td></tr>
-  <tr>
-    <td class="p1 bb" colspan="3">ที่อยู่ &nbsp;&nbsp;2/7 ซอย 2 (ถนนสระเกษ) ถนนสระเกษ ตำบลบ่อยาง อำเภอเมืองสงขลา จังหวัดสงขลา 90000</td>
-  </tr>
-  <tr><td class="small p1" colspan="3">( ให้ระบุ &nbsp;เลขที่ &nbsp;ตรอก/ซอย &nbsp;หมู่ที่ &nbsp;ถนน &nbsp;ตำบล/แขวง &nbsp;อำเภอ/เขต &nbsp;จังหวัด )</td></tr>
-</table>
-
-<!-- ======= ผู้ถูกหักภาษี ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <tr>
-    <td class="p2 bb" style="font-weight:700;width:55%">ผู้ถูกหักภาษี &nbsp;ณ &nbsp;ที่จ่าย :-</td>
-    <td class="p1 bb bl" style="font-size:8pt;width:22%">เลขประจำตัวประชาชน</td>
-    <td class="p1 bb" style="width:23%"></td>
-  </tr>
-  <tr>
-    <td class="p1 bb">ชื่อ &nbsp;&nbsp;<span id="c_name"></span></td>
-    <td class="p1 bb bl" style="font-size:8pt">เลขประจำตัวผู้เสียภาษีอากร</td>
-    <td class="p1 bb" style="font-weight:700" id="c_taxid"></td>
-  </tr>
-  <tr><td class="small bb p1" colspan="3">( ให้ระบุว่าเป็น บุคคล นิติบุคคล บริษัท สมาคม หรือ คณะบุคคล )</td></tr>
-  <tr>
-    <td class="p1 bb" colspan="3">ที่อยู่ &nbsp;&nbsp;<span id="c_addr"></span></td>
-  </tr>
-  <tr><td class="small p1" colspan="3">( ให้ระบุ &nbsp;เลขที่ &nbsp;ตรอก/ซอย &nbsp;หมู่ที่ &nbsp;ถนน &nbsp;ตำบล/แขวง &nbsp;อำเภอ/เขต &nbsp;จังหวัด )</td></tr>
-</table>
-
-<!-- ======= ลำดับที่ + ภ.ง.ด. (2 rows) ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <tr>
-    <td class="p1 bb" style="white-space:nowrap">ลำดับที่ &nbsp;<span id="c_seqNum" style="border:1px solid #333;padding:0 5px;font-weight:700">1</span>&nbsp; ในแบบ</td>
-    <td class="p1 bb bl" style="font-size:8.5pt">
-      <span class="cb" id="cb1"></span>&nbsp;(1) ภ.ง.ด. 1ก. &ensp;
-      <span class="cb" id="cb2"></span>&nbsp;(2) ภ.ง.ด. 1ก.พิเศษ &ensp;
-      <span class="cb" id="cb3"></span>&nbsp;(3) ภ.ง.ด. 2 &ensp;
-      <span class="cb" id="cb4"></span>&nbsp;(4) ภ.ง.ด. 2ก.
-    </td>
-  </tr>
-  <tr>
-    <td class="p1 bb small" colspan="2">(ให้สามารถอ้างอิงหรือสอบยันกันได้ระหว่างลำดับที่ตาม หนังสือรับรองฯ กับแบบยื่นรายการภาษีหักที่จ่าย)</td>
-  </tr>
-  <tr>
-    <td class="p1 bb"></td>
-    <td class="p1 bb bl" style="font-size:8.5pt">
-      <span class="cb" id="cb5"></span>&nbsp;(5) ภ.ง.ด. 3 &ensp;
-      <span class="cb" id="cb6"></span>&nbsp;(6) ภ.ง.ด. 3ก. &ensp;
-      <span class="cb" id="cb7"></span>&nbsp;(7) ภ.ง.ด. 53
-    </td>
-  </tr>
-</table>
-
-<!-- ======= ตารางประเภทเงินได้ ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <thead>
-    <tr>
-      <th class="p1 bb br" style="text-align:left;width:58%">ประเภทเงินได้พึงประเมินที่จ่าย</th>
-      <th class="p1 bb br" style="text-align:center;width:14%;font-size:8pt">วัน &nbsp;เดือน<br>หรือปีภาษี ที่จ่าย</th>
-      <th class="p1 bb br" style="text-align:center;width:14%;font-size:8pt">จำนวนเงินที่จ่าย</th>
-      <th class="p1 bb" style="text-align:center;width:14%;font-size:8pt">ภาษีที่หัก<br>และนำส่งไว้</th>
-    </tr>
-  </thead>
-  <tbody class="income-desc">
-    <!-- Row 1 -->
-    <tr>
-      <td class="p1 bb br">1. &nbsp;เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส ฯลฯ &nbsp;ตามมาตรา 40 (1)</td>
-      <td class="p1 bb br" id="r1_date" style="text-align:center"></td>
-      <td class="p1 bb br" id="r1_amt" style="text-align:right"></td>
-      <td class="p1 bb" id="r1_tax" style="text-align:right"></td>
-    </tr>
-    <!-- Row 2 -->
-    <tr>
-      <td class="p1 bb br">2. &nbsp;ค่าธรรมเนียม &nbsp;ค่านายหน้า &nbsp;ฯลฯ &nbsp;ตามมาตรา 40 (2)</td>
-      <td class="p1 bb br" id="r2_date" style="text-align:center"></td>
-      <td class="p1 bb br" id="r2_amt" style="text-align:right"></td>
-      <td class="p1 bb" id="r2_tax" style="text-align:right"></td>
-    </tr>
-    <!-- Row 3 -->
-    <tr>
-      <td class="p1 bb br">3. &nbsp;ค่าแห่งลิขสิทธิ์ &nbsp;ฯลฯ &nbsp;ตามมาตรา 40 (3)</td>
-      <td class="p1 bb br" id="r3_date" style="text-align:center"></td>
-      <td class="p1 bb br" id="r3_amt" style="text-align:right"></td>
-      <td class="p1 bb" id="r3_tax" style="text-align:right"></td>
-    </tr>
-    <!-- Row 4ก -->
-    <tr>
-      <td class="p1 bb br">4. &nbsp;(ก) ค่าดอกเบี้ย ฯลฯ &nbsp;ตามมาตรา 40 (4) (ก)</td>
-      <td class="p1 bb br" id="r4a_date" style="text-align:center"></td>
-      <td class="p1 bb br" id="r4a_amt" style="text-align:right"></td>
-      <td class="p1 bb" id="r4a_tax" style="text-align:right"></td>
-    </tr>
-    <!-- Row 4ข header -->
-    <tr>
-      <td class="p1 bb br">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ข) เงินปันผล ส่วนแบ่งของกำไร ฯลฯ ตามมาตรา 40 (4) (ข)</td>
-      <td class="p1 bb br"></td><td class="p1 bb br"></td><td class="p1 bb"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) กรณีผู้ได้รับเงินปันผลได้รับเครดิตภาษี โดยจ่ายจากกำไรสุทธิของกิจการที่ต้องเสียภาษีเงินได้นิติบุคคลในอัตราดังนี้</td>
-      <td class="p1 bb br"></td><td class="p1 bb br"></td><td class="p1 bb"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1.1) อัตราร้อยละ 30 ของกำไรสุทธิ</td>
-      <td class="p1 bb br" id="r4b11_date" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" id="r4b11_amt" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" id="r4b11_tax" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1.2) อัตราร้อยละ 25 ของกำไรสุทธิ</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1.3) อัตราร้อยละ 20 ของกำไรสุทธิ</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1.4) อัตราอื่น ๆ ( ระบุ ) <span class="dots" style="min-width:20mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ของกำไรสุทธิ</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2) กิจการที่ได้รับยกเว้นภาษีเงินได้นิติบุคคลซึ่ง ผู้รับเงินปันผลไม่ได้รับเครดิตภาษี</td>
-      <td class="p1 bb br"></td><td class="p1 bb br"></td><td class="p1 bb"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2.1) กำไรสุทธิของกิจการที่ได้รับยกเว้นภาษีเงินได้นิติบุคคล</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2.2) เงินปันผลหรือเงินส่วนแบ่งของกำไรที่ได้รับยกเว้นไม่ต้องนำมารวมคำนวณเป็นรายได้เพื่อเสียภาษีนิติบุคคล</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2.3) กำไรสุทธิส่วนที่ได้หักผลขาดทุนสุทธิยกมาไม่เกิน 5 ปี ก่อนรอบระยะเวลาบัญชีปัจจุบัน</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2.4) กำไรที่รับรู้ทางบัญชีโดยวิธีส่วนได้เสีย (equity method)</td>
-      <td class="p1 bb br" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <tr>
-      <td class="p1 bb br" style="font-size:8pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2.5) อัตราอื่น ๆ ( ระบุ )</td>
-      <td class="p1 bb br" id="r4b_date" style="text-align:center;font-size:8pt"></td>
-      <td class="p1 bb br" id="r4b_amt" style="text-align:right;font-size:8pt"></td>
-      <td class="p1 bb" id="r4b_tax" style="text-align:right;font-size:8pt"></td>
-    </tr>
-    <!-- Row 5 -->
-    <tr>
-      <td class="p1 bb br">5. &nbsp;การจ่ายเงินได้ที่ต้องหักภาษี ณ. ที่จ่าย ตามคำสั่งกรมสรรพากรที่ออกตาม</td>
-      <td class="p1 bb br" id="r5_date" style="text-align:center" rowspan="4"></td>
-      <td class="p1 bb br" id="r5_amt" style="text-align:right" rowspan="4"></td>
-      <td class="p1 bb" id="r5_tax" style="text-align:right" rowspan="4"></td>
-    </tr>
-    <tr><td class="p1 bb br">&nbsp;&nbsp;&nbsp;&nbsp;มาตรา 3 เตรส เช่น รางวัล ส่วนลดหรือประโยชน์ใดๆ เนื่องจากการส่งเสริมการขาย</td></tr>
-    <tr><td class="p1 bb br">&nbsp;&nbsp;&nbsp;&nbsp;รางวัลในการประกวด การแข่งขัน การชิงโชค ค่าแสดงของนักแสดงสาธารณะ</td></tr>
-    <tr><td class="p1 bb br">&nbsp;&nbsp;&nbsp;&nbsp;ค่าบริการ ค่าขนส่ง ค่าจ้างทำของ ค่าจ้างโฆษณา ค่าเช่า ค่าเบี้ยประกันวินาศภัย ฯลฯ</td></tr>
-    <!-- Row 6 -->
-    <tr>
-      <td class="p1 bb br">6. &nbsp;อื่นๆ (ระบุ) &nbsp;<span id="r6_desc" style="font-weight:700"></span></td>
-      <td class="p1 bb br" id="r6_date" style="text-align:center"></td>
-      <td class="p1 bb br" id="r6_amt" style="text-align:right"></td>
-      <td class="p1 bb" id="r6_tax" style="text-align:right"></td>
-    </tr>
-    <!-- Total -->
-    <tr style="background:#f5f5f5">
-      <td class="p2 br" colspan="2" style="text-align:right;font-weight:700">รวมเงินที่จ่าย &nbsp;และ &nbsp;ภาษีที่นำส่ง</td>
-      <td class="p2 br" id="c_totalAmt" style="text-align:right;font-weight:700"></td>
-      <td class="p2" id="c_totalTax" style="text-align:right;font-weight:700"></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ======= รวมภาษีตัวอักษร ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <tr>
-    <td class="p2" style="white-space:nowrap;font-weight:700;width:55mm">รวมเงินภาษีที่นำส่ง (ตัวอักษร)</td>
-    <td class="p2 bl" style="text-align:center;font-style:italic" id="c_taxWords">-</td>
-  </tr>
-</table>
-
-<!-- ======= กองทุน / ประกันสังคม ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm;font-size:8pt">
-  <tr>
-    <td class="p1 bb">เงินสะสมจ่ายเข้ากองทุนสำรองเลี้ยงชีพ &nbsp;ใบอนุญาตเลขที่ <span class="dots" style="min-width:28mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-    <td class="p1 bb bl" style="text-align:right;white-space:nowrap">จำนวนเงิน &nbsp;<span class="dots" style="min-width:18mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; บาท</td>
-  </tr>
-  <tr>
-    <td class="p1" colspan="2">เงินสมทบจ่ายเข้ากองทุนประกันสังคม &nbsp;จำนวน <span class="dots" style="min-width:18mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> บาท &ensp; เลขที่บัญชีนายจ้าง <span class="dots" style="min-width:22mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> &ensp; เลขที่บัตรประกันสังคม ของผู้ถูกหักภาษี ณ ที่จ่าย <span class="dots" style="min-width:22mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-  </tr>
-</table>
-
-<!-- ======= ผู้จ่ายเงิน + ลงชื่อ ======= -->
-<table class="ct bx" style="margin-bottom:1.5mm">
-  <tr>
-    <td class="p2 bb br" style="font-weight:700;white-space:nowrap">ผู้จ่ายเงิน</td>
-    <td class="p2 bb" colspan="3">ขอรับรองว่าข้อความและตัวเลขดังกล่าวข้างต้น &nbsp;ถูกต้องตรงกับความจริงทุกประการ</td>
-  </tr>
-  <tr>
-    <td class="p1 bb br"><span class="cb" id="ptype1"></span>&nbsp; หักภาษี &nbsp;ณ &nbsp;ที่จ่าย</td>
-    <td class="p1 bb" colspan="3" rowspan="3" style="vertical-align:middle;text-align:center">
-      ลงชื่อ <span class="dots" style="min-width:55mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    </td>
-  </tr>
-  <tr>
-    <td class="p1 bb br"><span class="cb" id="ptype2"></span>&nbsp; ออกภาษีให้ตลอดไป</td>
-  </tr>
-  <tr>
-    <td class="p1 bb br"><span class="cb" id="ptype3"></span>&nbsp; ออกภาษีให้ครั้งเดียว</td>
-  </tr>
-  <tr>
-    <td class="p1 br"><span class="cb" id="ptype4"></span>&nbsp; อื่นๆ (ระบุ) <span class="dots" style="min-width:12mm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-    <td class="p1" colspan="3" style="text-align:center;font-size:8.5pt">
-      ผู้มีหน้าที่หักภาษี ณ ที่จ่าย<br>
-      <span style="font-size:8.5pt">วัน เดือน ปี &nbsp;ที่ออกหนังสือรับรองฯ &nbsp;<span id="c_issueDate" style="font-weight:700">........................</span></span>
-    </td>
-  </tr>
-</table>
-
-<!-- ======= คำเตือน + หมายเหตุ ======= -->
-<table class="ct" style="font-size:7.5pt;color:#444;border-top:1px solid #999;padding-top:2mm">
-  <tr>
-    <td style="width:50%;padding-right:5mm;vertical-align:top">
-      <b>คำเตือน</b>&ensp; ผู้มีหน้าที่ออกหนังสือรับรองการหักภาษี ณ. ที่จ่าย
-      ฝ่าฝืนไม่ปฏิบัติตามมาตรา &nbsp;50 &nbsp;ทวิ &nbsp;แห่งประมวลรัษฎากร
-      ต้องรับโทษทางอาญา &nbsp;ตามมาตรา &nbsp;35 &nbsp;แห่งประมวลรัษฎากร
-    </td>
-    <td style="vertical-align:top">
-      <b>หมายเหตุ</b> เลขประจำตัวผู้เสียภาษีอากร (13 หลัก)* หมายถึง<br>
-      1. กรณีบุคคลธรรมดาไทย ให้ใช้เลขประจำตัวประชาชนของกรมการปกครอง<br>
-      2. กรณีนิติบุคคล ให้ใช้เลขทะเบียนนิติบุคคลของกรมพัฒนาธุรกิจการค้า<br>
-      3. กรณีอื่น ๆ นอกเหนือจาก 1. และ 2. ให้ใช้เลขประจำตัวผู้เสียภาษีอากร (13 หลัก)
-    </td>
-  </tr>
-</table>
-
-    </div><!-- end cert -->
-  </div><!-- end cert-wrapper -->
-</div><!-- end preview-panel -->
-</div><!-- end main-layout -->
+</script>
 <script src="https://accounts.google.com/gsi/client" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
